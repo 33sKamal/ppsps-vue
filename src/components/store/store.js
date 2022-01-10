@@ -134,7 +134,27 @@ export default new Vuex.Store({
                 { id: 11, title: "ORGANISATION PROPRE AU CHANTIER" },
                 { id: 12, title: "PAIEMENT" }
             ]
-        }
+        },
+
+
+        lots : [
+
+            'Terrassement / VRD',
+            'Démolition',
+            'Gros œuvre',
+            'Couverture / étanchéité',
+            'Charpente',
+            'Revêtement façade / Bardage',
+            'Menuiserie Extérieures',
+            'Menuiseries Intérieures',
+            'Plâtrerie / Isolation / Faux plafonds',
+            'Revêtement Sol',
+            'Electricité',
+            'Chauffage / Ventilation / Climatisation',
+            'Plomberie',
+            'Nettoyage de chantier / Finitions',
+
+        ]
 
 
     },

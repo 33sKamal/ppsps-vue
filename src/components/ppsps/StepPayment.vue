@@ -3,8 +3,8 @@
         <div class="form-group row p-2">
             <div class="col-md-4">
                 <div class="custom-control custom-block custom-control-primary mb-1">
-                    <input type="radio" class="custom-control-input" id="card-payment" value="card-payment" v-model="$store.state.pps_ps.payment_method">
-                    <label class="custom-control-label" for="card-payment">
+                    <input type="radio" class="form-check-input" id="card-payment" value="card-payment" v-model="$store.state.pps_ps.payment_method">
+                    <label class="form-check-label" for="card-payment">
                         <span class="d-block font-w400 text-info text-center">
                             <span class="">Par C-bancaire {{$parent.$data.isAdmin}}</span>
                         </span>
@@ -14,8 +14,8 @@
 
               <div class="col-md-4">
                 <div class="custom-control custom-block custom-control-primary mb-1">
-                    <input type="radio" class="custom-control-input" id="paypal-payment" value="paypal-payment" v-model="$store.state.pps_ps.payment_method">
-                    <label class="custom-control-label" for="paypal-payment">
+                    <input type="radio" class="form-check-input" id="paypal-payment" value="paypal-payment" v-model="$store.state.pps_ps.payment_method">
+                    <label class="form-check-label" for="paypal-payment">
                         <span class="d-block font-w400 text-info text-center">
                             <span class="">Par Paypal</span>
                         </span>

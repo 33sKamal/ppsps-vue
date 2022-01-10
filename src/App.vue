@@ -30,20 +30,35 @@
       >
         <button
           type="button"
-          :class="{ 'disabled': $store.state.form.actvie_step == 1 }"
+          :class="{ disabled: $store.state.form.actvie_step == 1 }"
           @click="previousStep()"
           class="btn btn-primary"
         >
           Précédent
         </button>
+        
         <button
           type="button"
-          :class="{ 'disabled': $store.state.form.actvie_step == 11 }"
+          v-if="$store.state.form.actvie_step < 11 "
           @click="nextStep()"
           class="btn btn-primary"
         >
           Suivante
         </button>
+
+
+
+        <button
+          type="button"
+          v-else
+          @click="generatePdf()"
+          class="btn btn-success"
+        >
+          Generate documentr
+        </button>
+
+
+
       </div>
     </div>
   </div>
@@ -70,7 +85,71 @@ export default {
       this.$store.state.form.actvie_step--;
     },
     nextStep() {
-      this.$store.state.form.actvie_step++;
+      this.$store.state.form.actvie_step++
+
+      // this.validateForm()
+      //   .then(() => this.$store.state.form.actvie_step++)
+      //   .catch(() => {
+      //     console.log(" Not Done ");
+      //   });
+    }, 
+
+
+    generatePdf(){
+      console.log('Generate the sdocuemnt')
+
+    },
+
+    validateForm() {
+      return new Promise((resolve, reject) => {
+        let hasError = false;
+
+        let inputs = document.getElementsByTagName("input");
+        let textareas = document.getElementsByTagName("textarea");
+        let selects = document.getElementsByTagName("select");
+
+
+
+        // clear the errors
+        for (const item of inputs) item.classList.remove("is-error");
+        for (const item of textareas) item.classList.remove("is-error");
+        for (const item of selects) item.classList.remove("is-error");
+        
+        for (const item of inputs) {
+          let rules = item.dataset.validate;
+          if (rules) {
+            if (rules.includes("required") && item.value == "") {
+              hasError = true;
+              item.classList.add("is-error");
+            }
+          }
+        }
+
+
+        
+        for (const item of textareas) {
+          let rules = item.dataset.validate;
+          if (rules) {
+            if (rules.includes("required") && item.value == "") {
+              hasError = true;
+              item.classList.add("is-error");
+            }
+          }
+        }
+
+        for (const item of selects) {
+          let rules = item.dataset.validate;
+          if (rules) {
+            if (rules.includes("required") && item.value == "") {
+              hasError = true;
+              item.classList.add("is-error");
+            }
+          }
+        }
+
+
+        return hasError ? reject() : resolve();
+      });
     },
   },
 
