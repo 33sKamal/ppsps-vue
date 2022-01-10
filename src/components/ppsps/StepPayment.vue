@@ -27,7 +27,7 @@
 
         <!-- Card Payment -->
         <div class="form-group col-md-12" v-show="$store.state.pps_ps.payment_method == 'card-payment'" >
-            <div id="card-element"  class="form-control form-control-alt input-validate">
+            <div id="card-element"  class="form-control  ">
             </div>
             <div id="card-errors" role="alert"></div>
         </div>
@@ -39,7 +39,7 @@
                     value="J'utilise paypal"
                     class="btn btn-info"
                     >
-            <!-- class="form-control form-control-alt input-validate " -->
+            <!-- class="form-control" -->
             <!-- placeholder="Adresse email de compte paypal" -->
         </div>
 

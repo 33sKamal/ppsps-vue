@@ -1,0 +1,18 @@
+
+.is-error {
+    border: 1px #c51d1d solid!important;
+    background: #ff000029!important;
+    transition: border 500ms!important;
+    transition: background 500ms!important;
+}
+
+.disabled {
+    color: currentColor!important;
+    cursor: not-allowed!important;
+    opacity: 0.5!important;
+    pointer-events: none!important;
+  }
+.quantity-input{
+    width: 100px;
+    margin: 0 .5rem;
+}

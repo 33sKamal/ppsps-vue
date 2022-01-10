@@ -1,207 +1,60 @@
-<template>    
-    <div class="block-content">
-        <div class="row">
-
-
-            <!-- Maitre section -->
-            
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="maitre_ouvrage_name">MAITRE D'OUVRAGE</label>
-                    <input 
-                    type="text" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitre_ouvrage_name"
-                    placeholder="Nom"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_name')}"
-                    kamal-v-validate="'required'"
-                    name="maitre_ouvrage_name"
-                    id="maitre_ouvrage_name" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitre_ouvrage_address"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_address')}"
-                    kamal-v-validate="'required'"
-                    name="maitre_ouvrage_address"
-                    id="maitre_ouvrage_address" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse (optionnelle)" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitre_ouvrage_address_two"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_address_two')}"
-                    kamal-v-validate="''"
-                    name="maitre_ouvrage_address_two"
-                    id="maitre_ouvrage_address_two" 
-                    >
-                    <input 
-                    type="text" 
-                    placeholder="Téléphone" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitre_ouvrage_phone"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_phone')}"
-                    kamal-v-validate="'required'"
-                    name="maitre_ouvrage_phone"
-                    id="maitre_ouvrage_phone" 
-                    >
-                </div>
-            </div>
-
-            <!-- Maitrise section -->
-
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="maitre_ouvrage_name">MAITRISE D'ŒUVRE</label>
-                    <input 
-                    type="text" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitrise_ouvrage_name"
-                    placeholder="Nom"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_name')}"
-                    kamal-v-validate="'required'"
-                    name="maitre_ouvrage_name"
-                    id="maitre_ouvrage_name" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitrise_ouvrage_address"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_address')}"
-                    kamal-v-validate="'required'"
-                    name="maitre_ouvrage_address"
-                    id="maitre_ouvrage_address" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse (optionnelle)" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitrise_ouvrage_address_two"
-                    
-                    :class="{'is-error':[].includes('maitre_ouvrage_address_two')}"
-                    kamal-v-validate="''"
-                    name="maitre_ouvrage_address_two"
-                    id="maitre_ouvrage_address_two" 
-                    >
-                    <input 
-                    type="text" 
-                    placeholder="Téléphone" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitrise_ouvrage_phone"
-                    
-                    :class="{'is-error':[].includes('maitrise_ouvrage_phone')}"
-                    kamal-v-validate="'required'"
-                    name="maitrise_ouvrage_phone"
-                    id="maitrise_ouvrage_phone" 
-                    >
-                    <!-- <input 
-                    type="text"
-                    placeholder="Fax" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.maitrise_ouvrage_fax"
-                    
-                    :class="{'is-error':[].includes('maitrise_ouvrage_fax')}"
-                    kamal-v-validate="'required'"
-                    name="maitrise_ouvrage_fax"
-                    id="maitrise_ouvrage_fax" 
-                    > -->
-                </div>
-            </div>
-
-            <!-- Coordinateur section -->
-            
-            <div class="col-md-4">
-                <div class="form-group">
-                    <label for="maitre_ouvrage_name">COORDINATEUR SPS</label>
-                    <input 
-                    type="text" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.coordinateur_sps_name"
-                    placeholder="Nom"
-                    
-                    :class="{'is-error':[].includes('coordinateur_sps')}"
-                    kamal-v-validate="'required'"
-                    name="coordinateur_sps"
-                    id="coordinateur_sps" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.coordinateur_sps_address"
-                    
-                    :class="{'is-error':[].includes('coordinateur_sps_address')}"
-                    kamal-v-validate="'required'"
-                    name="coordinateur_sps_address"
-                    id="coordinateur_sps_address" 
-                    >
-                    <input 
-                    type="text"
-                    placeholder="Adresse (optionnelle)" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.coordinateur_sps_address_two"
-                    
-                    :class="{'is-error':[].includes('coordinateur_sps_address_two')}"
-                    kamal-v-validate="''"
-                    name="coordinateur_sps_address_two"
-                    id="coordinateur_sps_address_two" 
-                    >
-                    <input 
-                    type="text" 
-                    placeholder="Téléphone" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.coordinateur_sps_phone"
-                    
-                    :class="{'is-error':[].includes('coordinateur_sps_phone')}"
-                    kamal-v-validate="'required'"
-                    name="coordinateur_sps_phone"
-                    id="coordinateur_sps_phone" 
-                    >
-                    <!-- <input 
-                    type="text"
-                    placeholder="Fax" 
-                    class="form-control form-control-alt input-validate mb-3"
-                    v-model="$store.state.pps_ps.coordinateur_sps_fax"
-                    
-                    :class="{'is-error':[].includes('coordinateur_sps_fax')}"
-                    kamal-v-validate="'required'"
-                    name="coordinateur_sps_fax"
-                    id="coordinateur_sps_fax" 
-                    > -->
-                </div>
-            </div>
-        </div>
+<template>
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="oppbtp">OPPBTP</label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        v-model="$store.state.pps_ps.oppbtp"
+        placeholder=""
+        id="oppbtp"
+        :class="{ 'is-error': $store.getters.errors.includes('oppbtp') }"
+        kamal-v-validate="'required'"
+        name="oppbtp"
+      />
     </div>
+
+    <div class="form-group">
+      <label for="inspection_du_travail">INSPECTION DU TRAVAIL </label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        v-model="$store.state.pps_ps.inspection_du_travail"
+        placeholder=""
+        id="inspection_du_travail"
+        :class="{ 'is-error': $store.getters.errors.includes('inspection_du_travail') }"
+        kamal-v-validate="'required'"
+        name="inspection_du_travail"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="cram">CRAM</label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        v-model="$store.state.pps_ps.cram"
+        placeholder=""
+        id="cram"
+        :class="{ 'is-error': $store.getters.errors.includes('cram') }"
+        kamal-v-validate="'required'"
+        name="cram"
+      />
+    </div>
+
+    <div class="form-group">
+      <label for="médecine_du_travail">MÉDECINE DU TRAVAIL</label>
+      <input
+        type="text"
+        class="form-control mb-3"
+        v-model="$store.state.pps_ps.médecine_du_travail"
+        placeholder=""
+        id="médecine_du_travail"
+        :class="{ 'is-error': $store.getters.errors.includes('médecine_du_travail') }"
+        kamal-v-validate="'required'"
+        name="médecine_du_travail"
+      />
+    </div>
+  </div>
 </template>
 
-<script>
-
-
-
-
-
-export default {
-    
-   
-    computed:{
-        
-
-    },
-
-    methods:{
-      
-
-    }
-    
-}
-</script>

@@ -1,122 +1,205 @@
 <template>
-  <div class="block-content">
-    <div class="row justify-content-center py-sm-3">
-      <div class="col-md-12">
-        <div class="form-group">
-          <label for="works_type">Nature des travaux</label>
+  <div class="col-md-12">
+    <div class="form-group">
+      <label for="works_type"
+        >Nombre de travailleurs secouristes sur chantier :</label
+      >
+      <input
+        type="text"
+        class="form-control"
+        v-model="$store.state.pps_ps.works_secouristes_number"
+        id="works_secouristes_number"
+      />
+    </div>
+
+    <div class="form-group">
+      <label> Horaire de travail : </label>
+
+      <div class="form-inline mb-3">
+        <div class="form-inline mr-3">
+          <label class="mr-2 small"> Du lundi au jeudi : </label>
 
           <select
-            class="form-control form-control-alt"
-            id="works_type"
-            v-model="$store.state.pps_ps.works_type"
-            :class="{ 'is-error': [].includes('works_type') }"
+            disabled
+            class="disabled-timer form-control mr-1"
+            :class="{ 'is-error': $store.getters.errors.includes('works_daily_morning_hour') }"
+            v-model="$store.state.pps_ps.works_daily_morning_hour"
+            @change="$parent.clearError('works_daily_morning_hour')"
             kamal-v-validate="'required'"
-            name="works_type"
+            name="works_daily_morning_hour"
+            id="works_daily_morning_hour"
           >
-            <option></option>
-            <!-- Required for data-placeholder attribute to work with Select2 plugin -->
-            <option :value="lot" v-for="(lot, index) in lots" :key="index">
-              {{ lot }}
+            <option
+              :value="hour"
+              v-for="(hour, index) in morning_hours"
+              :key="index"
+            >
+              {{ hour }}
+            </option>
+          </select>
+
+          <select
+            disabled
+            class="disabled-timer form-control"
+            :class="{ 'is-error': $store.getters.errors.includes('works_daily_morning_minutes') }"
+            v-model="$store.state.pps_ps.works_daily_morning_minutes"
+            @change="$parent.clearError('works_daily_morning_minutes')"
+            kamal-v-validate="'required'"
+            name="works_daily_morning_minutes"
+            id="works_daily_morning_minutes"
+          >
+            <option
+              :value="minute"
+              v-for="(minute, index) in minutes"
+              :key="index"
+            >
+              {{ minute }}
             </option>
           </select>
         </div>
 
-        <div class="form-group">
-          <div class="custom-control custom-switch custom-control-success">
-            <input
-              type="checkbox"
-              class="custom-control-input"
-              id="works_is_cordination"
-              v-model="$store.state.pps_ps.works_is_cordination"
-              :class="{ 'is-error': [].includes('works_is_cordination') }"
-              kamal-v-validate="''"
-              name="works_is_cordination"
-            />
-            <label class="custom-control-label" for="works_is_cordination"
-              >Existe-t-il un plan général de coordination ?</label
-            >
-          </div>
-        </div>
-
-        <div class="form-group">
-          <label for="works_delay">Délai global : </label>
-
-          <input
-            type="text"
-            class="form-control form-control-alt input-validate"
-            v-model="$store.state.pps_ps.works_delay"
-            id="works_delay"
-            :class="{ 'is-error': [].includes('works_delay') }"
-            kamal-v-validate="'required'"
-            name="works_delay"
-          />
-        </div>
-
-        <div class="row">
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="works_start_date">Démarrage des travaux :</label>
-              <input
-                type="text"
-                class="js-datepicker form-control form-control-alt"
-                data-week-start="1"
-                data-autoclose="true"
-                data-today-highlight="true"
-                data-date-format="yyyy-mm-dd"
-                id="works_start_date"
-                :class="{ 'is-error': [].includes('works_start_date') }"
-                kamal-v-validate="'required'"
-                name="works_start_date"
-              />
-            </div>
-          </div>
-          <div class="col-md-6">
-            <div class="form-group">
-              <label for="works_ends_date">Fin des travaux :</label>
-              <input
-                type="text"
-                class="js-datepicker form-control form-control-alt"
-                data-week-start="1"
-                data-autoclose="true"
-                data-today-highlight="true"
-                data-date-format="yyyy-mm-dd"
-                id="works_ends_date"
-                :class="{ 'is-error': [].includes('works_ends_date') }"
-                kamal-v-validate="'required'"
-                name="works_ends_date"
-              />
-            </div>
-          </div>
-        </div>
-
-        <!-- effectif inputs  -->
-
         <div class="form-inline">
-          <label>Effectif prévisionnel :</label>
+          <label class="mr-3"> Au </label>
 
-          <input
-            type="text"
-            class="form-control form-control-alt input-validate ml-3"
-            placeholder="Minimum"
-            v-model="$store.state.pps_ps.works_effectif_min"
-            id="works_effectif_min"
-            :class="{ 'is-error': [].includes('works_effectif_min') }"
+          <select
+            disabled
+            class="disabled-timer form-control mr-1"
+            :class="{ 'is-error': $store.getters.errors.includes('works_daily_evning_hour') }"
+            v-model="$store.state.pps_ps.works_daily_evning_hour"
+            @change="$parent.clearError('works_daily_evning_hour')"
             kamal-v-validate="'required'"
-            name="works_effectif_min"
-          />
+            name="works_daily_evning_hour"
+            id="works_daily_evning_hour"
+          >
+            <option
+              :value="hour"
+              v-for="(hour, index) in evening_hours"
+              :key="index"
+            >
+              {{ hour }}
+            </option>
+          </select>
 
-          <input
-            type="text"
-            class="form-control form-control-alt input-validate ml-3"
-            placeholder="Maximum"
-            v-model="$store.state.pps_ps.works_effectif_max"
-            id="works_effectif_max"
-            :class="{ 'is-error': [].includes('works_effectif_max') }"
+          <select
+            disabled
+            class="disabled-timer form-control"
+            :class="{ 'is-error': $store.getters.errors.includes('works_daily_evning_minutes') }"
+            v-model="$store.state.pps_ps.works_daily_evning_minutes"
+            @change="$parent.clearError('works_daily_evning_minutes')"
             kamal-v-validate="'required'"
-            name="works_effectif_max"
-          />
+            name="works_daily_evning_minutes"
+            id="works_daily_evning_minutes"
+          >
+            <option
+              :value="minute"
+              v-for="(minute, index) in minutes"
+              :key="index"
+            >
+              {{ minute }}
+            </option>
+          </select>
         </div>
       </div>
+
+      <div class="form-inline">
+        <label class="mr-2 small"> </label>
+
+        <div class="form-inline">
+          <div class="form-inline mr-3">
+            <label class="mr-2 small"> Le vendredi : </label>
+            <select
+              class="form-control mr-1"
+              :class="{ 'is-error': $store.getters.errors.includes('works_friday_morning_hour') }"
+              @change="$parent.clearError('works_friday_morning_hour')"
+              kamal-v-validate="'required'"
+              name="works_friday_morning_hour"
+              id="works_friday_morning_hour"
+              v-model="$store.state.pps_ps.works_friday_morning_hour"
+            >
+              <option
+                :value="hour"
+                v-for="(hour, index) in morning_hours"
+                :key="index"
+              >
+                {{ hour }}
+              </option>
+            </select>
+
+            <select
+              class="form-control"
+              :class="{
+                'is-error': $store.getters.errors.includes('works_friday_morning_minutes'),
+              }"
+              @change="$parent.clearError('works_friday_morning_minutes')"
+              kamal-v-validate="'required'"
+              name="works_friday_morning_minutes"
+              id="works_friday_morning_minutes"
+              v-model="$store.state.pps_ps.works_friday_morning_minutes"
+            >
+              <option
+                :value="minute"
+                v-for="(minute, index) in minutes"
+                :key="index"
+              >
+                {{ minute }}
+              </option>
+            </select>
+          </div>
+
+          <div class="form-inline">
+            <label class="mr-3"> Au </label>
+
+            <select
+              class="form-control mr-1"
+              :class="{ 'is-error': $store.getters.errors.includes('works_friday_evning_hour') }"
+              @change="$parent.clearError('works_friday_evning_hour')"
+              kamal-v-validate="'required'"
+              name="works_friday_evning_hour"
+              id="works_friday_evning_hour"
+              v-model="$store.state.pps_ps.works_friday_evning_hour"
+            >
+              <option
+                :value="hour"
+                v-for="(hour, index) in evening_hours"
+                :key="index"
+              >
+                {{ hour }}
+              </option>
+            </select>
+
+            <select
+              class="form-control"
+              :class="{
+                'is-error': $store.getters.errors.includes('works_friday_evning_minutes'),
+              }"
+              @change="$parent.clearError('works_friday_evning_minutes')"
+              kamal-v-validate="'required'"
+              id="works_friday_evning_minutes"
+              v-model="$store.state.pps_ps.works_friday_evning_minutes"
+              name="works_friday_evning_minutes"
+            >
+              <option
+                :value="minute"
+                v-for="(minute, index) in minutes"
+                :key="index"
+              >
+                {{ minute }}
+              </option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Approvisionnement :   -->
+    <div class="form-group">
+      <label for="works_approvisionnement">Approvisionnement :</label>
+      <textarea
+        class="form-control"
+        v-model="$store.state.pps_ps.works_approvisionnement"
+        id="works_approvisionnement"
+      >
+      </textarea>
     </div>
   </div>
 </template>
@@ -125,28 +208,32 @@
 export default {
   data() {
     return {
-      lots: [],
+      morning_hours: [],
+      evening_hours: [],
+      minutes: [],
     };
   },
 
-  created() {
-    this.lots = [
-      "Terrassement / VRD ",
-      "Démolition ",
-      "Gros œuvre ",
-      "Couverture / étanchéité ",
-      "Charpente ",
-      "Revêtement façade / Bardage",
-      "Menuiserie Extérieures ",
-      "Menuiseries Intérieures ",
-      "Plâtrerie / Isolation / Faux plafonds ",
-      "Revêtement Sol ",
-      "Electricité ",
-      "Chauffage / Ventilation /  climatisation ",
-      "Plomberie ",
-      "Nettoyage de chantier / Finitions",
-    ];
-  },
+  computed: {},
 
+  mounted() {
+    // fill morning_hours
+    for (let hour = 8; hour < 12; hour++)
+      hour < 10
+        ? this.morning_hours.push("0" + hour)
+        : this.morning_hours.push(hour);
+    for (let hour = 13; hour < 19; hour++) this.evening_hours.push(hour);
+    // fill minutes
+    for (let minute = 0; minute < 60; minute += 5)
+      minute < 10 ? this.minutes.push("0" + minute) : this.minutes.push(minute);
+  },
 };
 </script>
+
+
+
+<style>
+.disabled-timer {
+  background-color: #b3b3b3 !important;
+}
+</style>
