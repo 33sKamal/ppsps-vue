@@ -7,8 +7,10 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 import "bootstrap/dist/css/bootstrap.min.css"
 import "bootstrap"
-
     
+window.html2pdf = require("./js/html2pdf.js")
+window.moment = require("moment")
+
 createApp(App)
 .use(VueSweetalert2)
 .use(store)

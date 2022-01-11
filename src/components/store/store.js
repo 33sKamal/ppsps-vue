@@ -10,50 +10,56 @@ export default new Vuex.Store({
         pps_ps: {
             soutraits: [],
 
-            first_name: '',
-            last_name: '',
-            email: '',
-            phone: '',
-            chantier_name: '',
-            chantier_phone: '',
-            logo_path: '',
-            address: '',
-            address_two: '',
-            city: '',
-            chantier_id: '',
+            first_name: 'test test test test',
+            last_name: 'test test test test',
+            email: 'test test test test',
+            phone: 'test test test test',
+            chantier_name: 'test test test test',
+            chantier_phone: 'test test test test',
+            logo_path: require('../../../src/assets/logo.png'),
+            address: 'test test test test',
+            address_two: 'test test test test',
+            city: 'test test test test',
+            chantier_id: 'test test test test',
 
             chantier_lot: [
+                'Terrassement / VRD',
+                'Démolition',
+                'Gros œuvre',
+                'Couverture / étanchéité',
+                'Charpente',
+                'Revêtement façade / Bardage',
             ],
-            chantier_description: '',
+            chantier_description: 'test test test test',
 
-            responsable_name: '',
-            responsable_phone: '',
-            responsable_visa: '',
-            responsable_indice_ppsps: '',
+            responsable_name: 'test test test test',
+            responsable_phone: 'test test test test',
+            responsable_visa: 'test test test test',
+            responsable_indice_ppsps: 'test test test test',
 
-            entreprise_name: '',
-            entreprise_address_one: '',
-            entreprise_address_two: '',
-            entreprise_phone: '',
-            entreprise_fax: '',
-            entreprise_qualifications: '',
-            entreprise_ste_responsable_name: '',
-            entreprise_chantier_responsable_name: '',
+            entreprise_name: 'test test test test',
+            entreprise_address_one: 'test test test test',
+            entreprise_address_two: 'test test test test',
+            entreprise_phone: 'test test test test',
+            entreprise_fax: 'test test test test',
+            entreprise_qualifications: 'test test test test',
+            entreprise_ste_responsable_name: 'test test test test',
+            entreprise_chantier_responsable_name: 'test test test test',
 
-            works_type: '',
-            works_is_cordination: '',
+            works_type: 'test test test test',
+            works_is_cordination: 'test test test test',
 
-            works_delay: '',
-            works_start_date: '',
-            works_ends_date: '',
+            works_delay: 'test test test test',
+            works_start_date: 'test test test test',
+            works_ends_date: 'test test test test',
 
-            works_effectif_min: '',
-            works_effectif_max: '',
+            works_effectif_min: 'test test test test',
+            works_effectif_max: 'test test test test',
 
-            works_secouristes_number: '',
+            works_secouristes_number: 'test test test test',
 
 
-            works_approvisionnement: '',
+            works_approvisionnement: 'test test test test',
             works_daily_morning_hour: '08',
             works_daily_morning_minutes: '00',
             works_daily_evning_hour: '17',
@@ -63,36 +69,36 @@ export default new Vuex.Store({
             works_friday_evning_hour: '17',
             works_friday_evning_minutes: '00',
 
-            maitre_ouvrage_name: '',
-            maitre_ouvrage_address: '',
-            maitre_ouvrage_address_two: '',
-            maitre_ouvrage_phone: '',
-            maitre_ouvrage_fax: '',
+            maitre_ouvrage_name: 'test test test test',
+            maitre_ouvrage_address: 'test test test test',
+            maitre_ouvrage_address_two: 'test test test test',
+            maitre_ouvrage_phone: 'test test test test',
+            maitre_ouvrage_fax: 'test test test test',
 
-            maitrise_ouvrage_name: '',
-            maitrise_ouvrage_address: '',
-            maitrise_ouvrage_address_two: '',
-            maitrise_ouvrage_phone: '',
-            maitrise_ouvrage_fax: '',
+            maitrise_ouvrage_name: 'test test test test',
+            maitrise_ouvrage_address: 'test test test test',
+            maitrise_ouvrage_address_two: 'test test test test',
+            maitrise_ouvrage_phone: 'test test test test',
+            maitrise_ouvrage_fax: 'test test test test',
 
-            coordinateur_sps_name: '',
-            coordinateur_sps_address: '',
-            coordinateur_sps_address_two: '',
-            coordinateur_sps_phone: '',
-            coordinateur_sps_fax: '',
+            coordinateur_sps_name: 'test test test test',
+            coordinateur_sps_address: 'test test test test',
+            coordinateur_sps_address_two: 'test test test test',
+            coordinateur_sps_phone: 'test test test test',
+            coordinateur_sps_fax: 'test test test test',
 
-            oppbtp: '',
-            inspection_du_travail: '',
-            cram: '',
-            médecine_du_travail: '',
+            oppbtp: 'test test test test',
+            inspection_du_travail: 'test test test test',
+            cram: 'test test test test',
+            médecine_du_travail: 'test test test test',
 
 
-            chantier_emplacement: '',
+            chantier_emplacement: 'test test test test',
             chantier_installations: [],
             dhol: "",
             chantier_parking: false,
             chantier_plan_circulation: false,
-            chantier_organisation_livraison: '',
+            chantier_organisation_livraison: 'test test test test',
             chantier_livraison_morning: '8H00 à 12H00',
             chantier_livraison_evening: '8H00 à 12H00',
 
@@ -137,7 +143,7 @@ export default new Vuex.Store({
         },
 
 
-        lots : [
+        lots: [
 
             'Terrassement / VRD',
             'Démolition',
@@ -154,8 +160,96 @@ export default new Vuex.Store({
             'Plomberie',
             'Nettoyage de chantier / Finitions',
 
-        ]
+        ],
 
+        lots_documents: [
+
+            {
+                title: "Couverture / étanchéité",
+                files: [
+                    require('../../../src/assets/lots/couverture-étanchéité/couverture-étanchéité-1.jpg'),
+                    require('../../../src/assets/lots/couverture-étanchéité/couverture-étanchéité-2.jpg'),
+                ]
+            },
+            {
+                title: "Démolition",
+                files: [
+                    require('../../../src/assets/lots/démolition/démolition.jpg'),
+                ]
+            },
+
+            {
+                title: "Electricité",
+                files: [
+
+                    require('../../../src/assets/lots/electricité/electricité-1.jpg'),
+                    require('../../../src/assets/lots/electricité/electricité-2.jpg'),
+                ]
+            },
+
+            {
+                title: "Plomberie",
+                files: [
+                    require('../../../src/assets/lots/plomberie/plomberie-1.jpg'),
+                    require('../../../src/assets/lots/plomberie/plomberie-2.jpg'),
+                ]
+            },
+
+            {
+                title: "Plâtrerie / Isolation / Faux plafonds",
+                files: [
+                    require('../../../src/assets/lots/plâtrerie-isolation-faux-plafonds/plâtrerie-isolation-faux-plafonds-1.jpg'),
+                    require('../../../src/assets/lots/plâtrerie-isolation-faux-plafonds/plâtrerie-isolation-faux-plafonds-2.jpg'),
+                ]
+            },
+            {
+                title: "Revêtement Sol",
+                files: [
+                    require('../../../src/assets/lots/revêtement-sol/revêtement-sol-1.jpg'),
+                    require('../../../src/assets/lots/revêtement-sol/revêtement-sol-2.jpg'),
+                ]
+            },
+
+            {
+                title: "Terrassement / VRD",
+                files: [
+                    require('../../../src/assets/lots/terrassement-vrd/terrassement-vrd-1.jpg')
+                ]
+            },
+
+            {
+                title: "Charpente",
+                files: [
+                    require('../../../src/assets/lots/fiche-charpente/fiche-charpente-1.jpg'),
+                    require('../../../src/assets/lots/fiche-charpente/fiche-charpente-2.jpg')
+
+                ]
+            },
+
+            {
+                title: "Gros œuvre",
+                files: [
+                    require('../../../src/assets/lots/fiche-gros-oeuvre-page/fiche-gros-oeuvre-page-1.jpg'),
+                    require('../../../src/assets/lots/fiche-gros-oeuvre-page/fiche-gros-oeuvre-page-2.jpg')
+                ]
+            },
+            {
+                title: "Menuiserie Extérieures",
+                files: [
+                    require('../../../src/assets/lots/fiche-menuiseries-exterieures/fiche-menuiseries-exterieures-1.jpg'),
+                    require('../../../src/assets/lots/fiche-menuiseries-exterieures/fiche-menuiseries-exterieures-2.jpg')
+
+                ]
+            },
+            {
+                title: "Menuiseries Intérieures",
+                files: [
+                    require('../../../src/assets/lots/fiche-menuiseries-interieures/fiche-menuiseries-interieures-1.jpg'),
+                    require('../../../src/assets/lots/fiche-menuiseries-interieures/fiche-menuiseries-interieures-2.jpg')
+
+                ]
+            },
+        ],
 
     },
 
@@ -308,6 +402,21 @@ export default new Vuex.Store({
         errors: (state) => state.errors,
         actvie_title: (state) => state.form.steps_title.find(({ id }) => id == state.form.actvie_step)?.title,
         actvie_step: (state) => state.form.actvie_step,
+
+        selected_lots_documents : (state) => {
+
+            let arrays =  state.lots_documents.filter(l => state.lots.includes(l.title))
+            .map(el=>{
+                return el.files
+            })
+            return  arrays.flat(1);
+            // lots_documents.map(lot_doc => {
+
+            // })
+            // lots_documents
+
+        }
+
 
 
     },

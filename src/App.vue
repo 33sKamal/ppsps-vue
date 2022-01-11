@@ -23,6 +23,7 @@
           <step9 v-if="$store.state.form.actvie_step == 9" />
           <step10 v-if="$store.state.form.actvie_step == 10" />
           <step11 v-if="$store.state.form.actvie_step == 11" />
+          <pdfFileTemplate ref="testHtml" />
         </div>
       </div>
       <div
@@ -36,17 +37,15 @@
         >
           Précédent
         </button>
-        
+
         <button
           type="button"
-          v-if="$store.state.form.actvie_step < 11 "
+          v-if="$store.state.form.actvie_step < 11"
           @click="nextStep()"
           class="btn btn-primary"
         >
           Suivante
         </button>
-
-
 
         <button
           type="button"
@@ -56,9 +55,6 @@
         >
           Generate documentr
         </button>
-
-
-
       </div>
     </div>
   </div>
@@ -76,6 +72,7 @@ import step8 from "./components/ppsps/Step08.vue";
 import step9 from "./components/ppsps/Step09.vue";
 import step10 from "./components/ppsps/Step10.vue";
 import step11 from "./components/ppsps/Step11.vue";
+import pdfFileTemplate from "./components/ppsps/PdfFileTemplate.vue";
 
 export default {
   name: "App",
@@ -85,19 +82,22 @@ export default {
       this.$store.state.form.actvie_step--;
     },
     nextStep() {
-      this.$store.state.form.actvie_step++
+      this.$store.state.form.actvie_step = 11;
 
       // this.validateForm()
       //   .then(() => this.$store.state.form.actvie_step++)
       //   .catch(() => {
       //     console.log(" Not Done ");
       //   });
-    }, 
+    },
+    generatePdf() {
+      var element = document.getElementById("testHtml");
 
+      window.html2pdf().set({
+        pagebreak: { before: ".separator-3" },
+      });
 
-    generatePdf(){
-      console.log('Generate the sdocuemnt')
-
+      window.html2pdf(element);
     },
 
     validateForm() {
@@ -108,13 +108,11 @@ export default {
         let textareas = document.getElementsByTagName("textarea");
         let selects = document.getElementsByTagName("select");
 
-
-
         // clear the errors
         for (const item of inputs) item.classList.remove("is-error");
         for (const item of textareas) item.classList.remove("is-error");
         for (const item of selects) item.classList.remove("is-error");
-        
+
         for (const item of inputs) {
           let rules = item.dataset.validate;
           if (rules) {
@@ -125,8 +123,6 @@ export default {
           }
         }
 
-
-        
         for (const item of textareas) {
           let rules = item.dataset.validate;
           if (rules) {
@@ -147,7 +143,6 @@ export default {
           }
         }
 
-
         return hasError ? reject() : resolve();
       });
     },
@@ -165,6 +160,7 @@ export default {
     step9,
     step10,
     step11,
+    pdfFileTemplate,
   },
 };
 </script>
