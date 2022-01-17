@@ -2,15 +2,32 @@
   <div class="pt-3 pb-3 container">
     <div class="card">
       <div
+        v-if="$store.state.form.actvie_step > 0"
         class="card-header d-flex align-items-center justify-content-between"
       >
         <h2 class="text-primary">{{ $store.getters.actvie_title }}</h2>
         <h2>
           <small class="text-war,">Page</small>
-          {{ $store.state.form.actvie_step }} / 11
+          {{ $store.state.form.actvie_step }} / 12
         </h2>
       </div>
-      <div class="card-body">
+
+      <div
+        v-else
+        class="card-header d-flex align-items-center justify-content-center"
+      >
+        <h2 class="text-primary">
+          Bienvenue dans le générateur des documents <strong>PPSPS</strong>
+        </h2>
+      </div>
+
+      <div
+        class="card-body"
+        :class="{
+          'card-body-height-limited': $store.state.form.actvie_step != 0,
+        }"
+      >
+        <welcome v-if="$store.state.form.actvie_step == 0" />
         <div class="row">
           <step1 v-if="$store.state.form.actvie_step == 1" />
           <step2 v-if="$store.state.form.actvie_step == 2" />
@@ -23,10 +40,11 @@
           <step9 v-if="$store.state.form.actvie_step == 9" />
           <step10 v-if="$store.state.form.actvie_step == 10" />
           <step11 v-if="$store.state.form.actvie_step == 11" />
-          <pdfFileTemplate ref="testHtml" />
+          <pdfFileTemplate />
         </div>
       </div>
       <div
+        v-if="$store.state.form.actvie_step > 0"
         class="card-footer d-flex align-items-center justify-content-between"
       >
         <button
@@ -40,7 +58,7 @@
 
         <button
           type="button"
-          v-if="$store.state.form.actvie_step < 11"
+          v-if="$store.state.form.actvie_step < 12"
           @click="nextStep()"
           class="btn btn-primary"
         >
@@ -49,11 +67,20 @@
 
         <button
           type="button"
-          v-else
+          v-if="$store.state.form.actvie_step == 12"
+          @click="resetThedocument"
+          class="btn btn-danger"
+        >
+          Re faire nouveau PPSPS
+        </button>
+
+        <button
+          type="button"
+          v-if="$store.state.form.actvie_step == 12"
           @click="generatePdf()"
           class="btn btn-success"
         >
-          Generate documentr
+          Télécharger document pdf
         </button>
       </div>
     </div>
@@ -73,16 +100,118 @@ import step9 from "./components/ppsps/Step09.vue";
 import step10 from "./components/ppsps/Step10.vue";
 import step11 from "./components/ppsps/Step11.vue";
 import pdfFileTemplate from "./components/ppsps/PdfFileTemplate.vue";
+import welcome from "./components/ppsps/Welcome.vue";
 
 export default {
   name: "App",
 
   methods: {
+    resetThedocument() {
+      this.$store.state.pps_ps.soutraits = [];
+
+      this.$store.state.pps_ps.first_name = "";
+      this.$store.state.pps_ps.last_name = "";
+      this.$store.state.pps_ps.email = "";
+      this.$store.state.pps_ps.phone = "";
+      this.$store.state.pps_ps.chantier_name = "";
+      this.$store.state.pps_ps.chantier_phone = "";
+      this.$store.state.pps_ps.logo_path = null;
+      this.$store.state.pps_ps.address = "";
+      this.$store.state.pps_ps.address_two = "";
+      this.$store.state.pps_ps.city = "";
+      this.$store.state.pps_ps.chantier_id = "";
+
+      this.$store.state.pps_ps.chantier_lot = [
+        "Terrassement / VRD",
+        "Démolition",
+        "Gros œuvre",
+        "Couverture / étanchéité",
+        "Charpente",
+        "Revêtement façade / Bardage",
+      ];
+
+      this.$store.state.pps_ps.chantier_description = "";
+
+      this.$store.state.pps_ps.responsable_name = "";
+      this.$store.state.pps_ps.responsable_phone = "";
+      this.$store.state.pps_ps.responsable_visa = "";
+      this.$store.state.pps_ps.responsable_indice_ppsps = "";
+
+      this.$store.state.pps_ps.entreprise_name = "";
+      this.$store.state.pps_ps.entreprise_address_one = "";
+      this.$store.state.pps_ps.entreprise_address_two = "";
+      this.$store.state.pps_ps.entreprise_phone = "";
+      this.$store.state.pps_ps.entreprise_fax = "";
+      this.$store.state.pps_ps.entreprise_qualifications = "";
+      this.$store.state.pps_ps.entreprise_ste_responsable_name = "";
+      this.$store.state.pps_ps.entreprise_chantier_responsable_name = "";
+
+      this.$store.state.pps_ps.works_type = "";
+      this.$store.state.pps_ps.works_is_cordination = "";
+
+      this.$store.state.pps_ps.works_delay = "";
+      this.$store.state.pps_ps.works_start_date = "";
+      this.$store.state.pps_ps.works_ends_date = "";
+
+      this.$store.state.pps_ps.works_effectif_min = "";
+      this.$store.state.pps_ps.works_effectif_max = "";
+
+      this.$store.state.pps_ps.works_secouristes_number = "";
+
+      this.$store.state.pps_ps.works_approvisionnement = "";
+      this.$store.state.pps_ps.works_daily_morning_hour = "08";
+      this.$store.state.pps_ps.works_daily_morning_minutes = "00";
+      this.$store.state.pps_ps.works_daily_evning_hour = "17";
+      this.$store.state.pps_ps.works_daily_evning_minutes = "00";
+      this.$store.state.pps_ps.works_friday_morning_hour = "08";
+      this.$store.state.pps_ps.works_friday_morning_minutes = "00";
+      this.$store.state.pps_ps.works_friday_evning_hour = "17";
+      this.$store.state.pps_ps.works_friday_evning_minutes = "00";
+
+      this.$store.state.pps_ps.maitre_ouvrage_name = "";
+      this.$store.state.pps_ps.maitre_ouvrage_address = "";
+      this.$store.state.pps_ps.maitre_ouvrage_address_two = "";
+      this.$store.state.pps_ps.maitre_ouvrage_phone = "";
+      this.$store.state.pps_ps.maitre_ouvrage_fax = "";
+
+      this.$store.state.pps_ps.maitrise_ouvrage_name = "";
+      this.$store.state.pps_ps.maitrise_ouvrage_address = "";
+      this.$store.state.pps_ps.maitrise_ouvrage_address_two = "";
+      this.$store.state.pps_ps.maitrise_ouvrage_phone = "";
+      this.$store.state.pps_ps.maitrise_ouvrage_fax = "";
+
+      this.$store.state.pps_ps.coordinateur_sps_name = "";
+      this.$store.state.pps_ps.coordinateur_sps_address = "";
+      this.$store.state.pps_ps.coordinateur_sps_address_two = "";
+      this.$store.state.pps_ps.coordinateur_sps_phone = "";
+      this.$store.state.pps_ps.coordinateur_sps_fax = "";
+
+      this.$store.state.pps_ps.oppbtp = "";
+      this.$store.state.pps_ps.inspection_du_travail = "";
+      this.$store.state.pps_ps.cram = "";
+      this.$store.state.pps_ps.médecine_du_travail = "";
+
+      this.$store.state.pps_ps.chantier_emplacement = "";
+      this.$store.state.pps_ps.chantier_installations = [];
+      this.$store.state.pps_ps.dhol = "";
+      this.$store.state.pps_ps.chantier_parking = false;
+      this.$store.state.pps_ps.chantier_plan_circulation = false;
+      this.$store.state.pps_ps.chantier_organisation_livraison = "";
+      this.$store.state.pps_ps.chantier_livraison_morning = "8H00 à 12H00";
+      this.$store.state.pps_ps.chantier_livraison_evening = "8H00 à 12H00";
+
+      this.$store.state.pps_ps.has_soutrait = true;
+      this.$store.state.pps_ps.soutraits_number = 0;
+      this.$store.state.pps_ps.payment_method = "card-payment";
+
+      this.$store.state.form.actvie_step = 1;
+    },
     previousStep() {
       this.$store.state.form.actvie_step--;
     },
+
     nextStep() {
-      this.$store.state.form.actvie_step = 11;
+      this.$store.state.form.actvie_step++;
 
       // this.validateForm()
       //   .then(() => this.$store.state.form.actvie_step++)
@@ -91,13 +220,13 @@ export default {
       //   });
     },
     generatePdf() {
-      var element = document.getElementById("testHtml");
+      let element = document.getElementById("testHtml");
 
-      window.html2pdf().set({
-        pagebreak: { before: ".separator-3" },
-      });
+      let opt = {
+        filename: "pps-ps-file.pdf",
+      };
 
-      window.html2pdf(element);
+      window.html2pdf(element).set(opt);
     },
 
     validateForm() {
@@ -161,12 +290,13 @@ export default {
     step10,
     step11,
     pdfFileTemplate,
+    welcome,
   },
 };
 </script>
 
 <style>
-.card-body {
+.card-body-height-limited {
   height: 70vh;
   min-height: 400px;
   overflow: scroll;

@@ -16,7 +16,7 @@ export default new Vuex.Store({
             phone: 'test test test test',
             chantier_name: 'test test test test',
             chantier_phone: 'test test test test',
-            logo_path: require('../../../src/assets/logo.png'),
+            logo_path: null,
             address: 'test test test test',
             address_two: 'test test test test',
             city: 'test test test test',
@@ -113,7 +113,7 @@ export default new Vuex.Store({
         errors: [],
 
         form: {
-            actvie_step: 1,
+            actvie_step: 0,
             steps_title: [
                 { id: 1, title: 'CHANTIER (Partie I)' },
                 { id: 2, title: 'DESCRIPTION DES TRAVAUX' },
@@ -277,20 +277,6 @@ export default new Vuex.Store({
         GO_TO_STEP: (state, payload) => state.form.actvie_step = payload,
         //  initalize the steep
         INIT_STEP: (state) => {
-
-
-
-
-            // state.form.steps.push({id:4,title : 'CHANTIER (Partie II)'})
-
-
-
-
-
-
-
-
-
 
             // state.form.steps.push({id:1000,title : "PAIEMENT (Par carte)"})
             state.form.actvie_step = state.form.steps[0].id

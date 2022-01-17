@@ -7,8 +7,6 @@
       </div>
     </div>
 
-    <div class="separator-3"></div>
-
     <h5>1 - RENSEIGNEMENTS ADMINISTRATIFS</h5>
 
     <h6>Chantier</h6>
@@ -101,7 +99,7 @@
       </div>
     </div>
 
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
     <h6>Identification de l'entreprise :</h6>
     <div class="w-100 border-solid box-size-bor p-4 mb-3 bg-gray float-left">
@@ -237,7 +235,7 @@
       </ul>
     </div>
 
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
     <h6>Désignation des participant :</h6>
     <div
@@ -319,7 +317,7 @@
         </strong>
       </p>
     </div>
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
     <h6>Organismes de prévention :</h6>
 
@@ -412,11 +410,11 @@
       </div>
     </div>
 
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
     <h6>Modalités d'accueil du personnel sur le chantier</h6>
-    <div class="h-780 border-solid">
-      <div class="w-100 box-size-bor p-4 bg-gray float-left h-780">
+    <div class="h-900 border-solid">
+      <div class="w-100 box-size-bor p-4 bg-gray float-left h-900">
         <p>
           Le personnel de l'entreprise, y compris les salariés intérimaires,
           devront revecoir, le jour de leur arrivée sur le chantier, une
@@ -462,7 +460,7 @@
           liste à l'issue de la formation.
         </p>
 
-        <table style="width: 100%" class="table table-success table-striped" >
+        <table style="width: 100%" class="table table-success table-striped">
           <tr>
             <th>NOM</th>
             <th>PRENOM</th>
@@ -479,7 +477,7 @@
         </table>
       </div>
     </div>
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
     <h6>
       Dispositions prises pour prévenir les risques liés à l'exécution des
@@ -594,46 +592,51 @@
       </div>
     </div>
 
-    <div class="new-page"></div>
+    <div class="html2pdf__page-break"></div>
 
-    <h5>3 - ORGANISATION DES SECOURS</h5>
+    <div style="height: 1150px">
+      <h5>3 - ORGANISATION DES SECOURS</h5>
 
-    <h5>Secours</h5>
-    <div class="text-center">
-      <div>
-        <img
-          :src="require('../../../src/assets/numeros-durgence.jpg')"
-          class="w-100"
-          alt=""
-        />
+      <h5>Secours</h5>
+      <div class="text-center">
+        <div>
+          <img
+            :src="require('../../../src/assets/numeros-durgence.jpg')"
+            class="w-100"
+            alt=""
+          />
+        </div>
+      </div>
+
+      <h5>Identification des moyens de secours :</h5>
+
+      <h5>Consignes de premiers secours :</h5>
+      <div class="h-85 border-solid">
+        <div class="w-100 box-size-bor p-4 bg-gray float-left">
+          <p>Document en annexe à afficher dans les vestiaires chantier.</p>
+        </div>
+      </div>
+
+      <h5>Dispositions prises pour informer la direction de l'entreprise :</h5>
+
+      <div class="h-85 border-solid mb-3">
+        <div class="w-100 box-size-bor p-4 bg-gray float-left">
+          <p>Document en annexe à afficher dans les vestiaires chantier.</p>
+        </div>
       </div>
     </div>
 
-    <h5>Identification des moyens de secours :</h5>
-
-    <h5>Consignes de premiers secours :</h5>
-    <div class="h-85 border-solid">
-      <div class="w-100 box-size-bor p-4 bg-gray float-left h-100">
-        <p>Document en annexe à afficher dans les vestiaires chantier.</p>
-      </div>
-    </div>
-
-    <h5>Dispositions prises pour informer la direction de l'entreprise :</h5>
-
-    <div class="h-85 border-solid mb-3">
-      <div class="w-100 box-size-bor p-4 bg-gray float-left h-100">
-        <p>Document en annexe à afficher dans les vestiaires chantier.</p>
-      </div>
-    </div>
-
-    <div v-if="$store.getters.selected_lots_documents.length">
-      <div
-        v-for="selected_lots_document in $store.getters.selected_lots_documents"
-        :key="selected_lots_document"
-      >
-        <div class="separator-3"></div>
-        <img class="w-100" :src="selected_lots_document" alt="" />
-      </div>
+    <div
+      v-for="selected_lots_document in $store.getters.selected_lots_documents"
+      :key="selected_lots_document"
+      class="m-0 p-0 html2pdf__page-break"
+      style="height: 1080px; position: relative"
+    >
+      <img
+        style="position:absolute:top0;left:0;"
+        class="w-100 h-100"
+        :src="selected_lots_document"
+      />
     </div>
   </div>
 </template>
@@ -792,10 +795,6 @@ $sizes: (
   margin-top: 25%;
 }
 
-.new-page {
-  page-break-before: always;
-}
-
 .mr-5px {
   margin-right: 5px;
 }
@@ -810,7 +809,7 @@ $sizes: (
 table,
 th,
 td {
-    border: 1px solid black;
+  border: 1px solid black;
   text-align: center;
 }
 
@@ -818,5 +817,4 @@ th,
 td {
   height: 30px;
 }
-
 </style>
